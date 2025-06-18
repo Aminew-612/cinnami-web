@@ -1,0 +1,574 @@
+/* Variables globales del proyecto */
+:root {
+    --color-primario-oscuro: #2D1B1B;
+    --color-cafe-principal: #5D4037;
+    --color-dorado-acento: #D4A574;
+    --color-cobre-acento: #B87333;
+    --fondo-claro: #F8F6F0;
+    --fondo-tarjeta: #FFFFFF;
+    --texto-principal: #2D1B1B;
+    --texto-secundario: #6B5B73;
+    --texto-claro: #9E9E9E;
+    --color-exito: #4CAF50;
+    --color-advertencia: #FF9800;
+    --color-peligro: #F44336;
+    --borde-claro: #E0E0E0;
+    --sombra-suave: rgba(0, 0, 0, 0.08);
+    --sombra-media: rgba(0, 0, 0, 0.15);
+}
+
+/* Reseteo básico de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos del cuerpo principal */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--fondo-claro);
+    color: var(--texto-principal);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.containerPrincipal {
+    padding-left: 280px; /* Espacio para la barra lateral */
+}
+
+/* Sección principal (hero) */
+.seccionPrincipal {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
+    background: linear-gradient(135deg, var(--fondo-claro) 0%, #FFF8F0 100%);
+}
+
+.contenedorPrincipal {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+}
+
+/* Contenido principal */
+.contenidoPrincipal {
+    animation: aparecerDesdeAbajo 0.8s ease-out;
+    width: 100%;
+}
+
+/* Perfil del usuario */
+.perfilUsuario {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 30px;
+    padding: 22px;
+    background: var(--fondo-tarjeta);
+    border-radius: 18px;
+    box-shadow: 0 8px 30px var(--sombra-suave);
+    width: 100%;
+}
+
+.avatarPerfil {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-dorado-acento), var(--color-cobre-acento));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+    flex-shrink: 0;
+}
+
+.informacionPerfil {
+    width: 100%;
+}
+
+.informacionPerfil h1 {
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--texto-principal);
+    margin-bottom: 4px;
+}
+
+.informacionPerfil .textoBienvenida {
+    font-size: 14px;
+    color: var(--texto-secundario);
+}
+
+/* Tarjeta de último acceso */
+.tarjetaAcceso {
+    background: var(--fondo-tarjeta);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 10px 40px var(--sombra-suave);
+    border: 1px solid var(--borde-claro);
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.encabezadoAcceso {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.iconoAcceso {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, var(--color-exito), #66BB6A);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+}
+
+.tituloAcceso {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--texto-principal);
+}
+
+/* Detalles del acceso */
+.detallesAcceso {
+    display: grid;
+    gap: 14px;
+}
+
+.elementoDetalle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.elementoDetalle:last-child {
+    border-bottom: none;
+}
+
+.etiquetaDetalle {
+    font-size: 13px;
+    color: var(--texto-secundario);
+    font-weight: 500;
+}
+
+.valorDetalle {
+    font-size: 14px;
+    color: var(--texto-principal);
+    font-weight: 600;
+    text-align: right;
+}
+
+.estadoExitoso {
+    color: var(--color-exito);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.puntoEstado {
+    width: 8px;
+    height: 8px;
+    background: var(--color-exito);
+    border-radius: 50%;
+    animation: pulsar 2s infinite;
+}
+
+/* Sección visual del dashboard */
+.visualPrincipal {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+    width: 100%;
+}
+
+/* Panel de control principal */
+.panelControl {
+    width: 100%;
+    background: var(--fondo-tarjeta);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 15px 45px var(--sombra-media);
+    border: 1px solid var(--borde-claro);
+    position: relative;
+    overflow: hidden;
+    animation: aparecerDesdeAbajo 0.8s ease-out;
+}
+
+.encabezadoPanel {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.tituloPanel {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--texto-principal);
+    margin-bottom: 6px;
+}
+
+.subtituloPanel {
+    font-size: 13px;
+    color: var(--texto-secundario);
+}
+
+/* Contenedor del candado con imagen */
+.contenedorCandado {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.imagenCandado {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.1), rgba(184, 115, 51, 0.1));
+    padding: 15px;
+    box-shadow: 0 8px 25px rgba(212, 165, 116, 0.2);
+    user-select: none;      /* No se puede seleccionar */
+    pointer-events: auto;   /* Permite eventos si los necesitas */
+}
+
+.imagenCandado:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(212, 165, 116, 0.3);
+}
+
+.candadoImagen {
+    width: 260px;
+    height: 260px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    transition: all 0.3s ease;
+  
+    user-select: none;      /* No se puede seleccionar */
+    pointer-events: auto;   /* Permite eventos si los necesitas */
+  }
+  
+
+.imagenCandado:hover .candadoImagen {
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
+}
+
+/* Estado del sistema */
+.estadoSistema {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: 14px;
+    margin-bottom: 28px;
+    border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.informacionEstado {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.indicadorEstado {
+    width: 11px;
+    height: 11px;
+    background: var(--color-exito);
+    border-radius: 50%;
+    animation: pulsar 2s infinite;
+}
+
+.textoEstado {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-exito);
+}
+
+.informacionSistema {
+    font-size: 12px;
+    color: var(--texto-secundario);
+    text-align: right;
+}
+
+/* Cuadrícula de acciones */
+.cuadriculaAcciones {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    width: 100%;
+}
+
+/* Botones de acción */
+.botonAccion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.botonPrimario {
+    background: linear-gradient(135deg, var(--color-cobre-acento), var(--color-dorado-acento));
+    color: white;
+    box-shadow: 0 8px 20px rgba(184, 115, 51, 0.3);
+}
+
+.botonPrimario:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(184, 115, 51, 0.4);
+}
+
+.botonSecundario {
+    background: var(--fondo-claro);
+    color: var(--texto-principal);
+    border: 2px solid var(--borde-claro);
+}
+
+.botonSecundario:hover {
+    background: #b8733378;
+    color: white;
+    border-color: #b8733378;
+    transform: translateY(-2px);
+}
+
+.iconoBoton {
+    font-size: 15px;
+}
+
+/* Estadísticas rápidas */
+.estadisticasRapidas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--borde-claro);
+    width: 100%;
+}
+
+.elementoEstadistica {
+    text-align: center;
+}
+
+.numeroEstadistica {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--color-cobre-acento);
+    margin-bottom: 4px;
+}
+
+.etiquetaEstadistica {
+    font-size: 11px;
+    color: var(--texto-secundario);
+    font-weight: 500;
+}
+
+/* Patrón de fondo tecnológico */
+.patronTecnologico {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, var(--color-dorado-acento) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.05;
+    animation: flotar 18s linear infinite;
+    pointer-events: none;
+}
+
+/* Responsive para tablets */
+@media (max-width: 1024px) {
+    .containerPrincipal {
+        padding-left: 0;
+    }
+    
+    body {
+        padding-left: 0;
+    }
+
+    .seccionPrincipal {
+        padding-top: 120px;
+    }
+
+    .contenedorPrincipal {
+        padding: 0 20px;
+        max-width: 100%;
+    }
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .contenedorPrincipal {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+        padding: 0 15px;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .contenidoPrincipal,
+    .visualPrincipal {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .perfilUsuario {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .informacionPerfil h1 {
+        font-size: 22px;
+    }
+
+    .tarjetaAcceso {
+        padding: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .panelControl {
+        padding: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .cuadriculaAcciones {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .botonAccion {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .estadisticasRapidas {
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+
+    .seccionPrincipal {
+        padding-top: 100px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* Ajustes para el candado en móviles */
+    .imagenCandado {
+        width: 80px;
+        height: 80px;
+        padding: 10px;
+    }
+
+    .candadoImagen {
+        width: 200px;
+    height: 200px;
+    }
+
+    /* Asegurar que todos los elementos ocupen el ancho completo */
+    .detallesAcceso,
+    .estadoSistema,
+    .encabezadoPanel,
+    .contenedorCandado {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Responsive para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .contenedorPrincipal {
+        padding: 0 10px;
+    }
+    
+    .estadisticasRapidas {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .perfilUsuario {
+        padding: 15px;
+    }
+    
+    .tarjetaAcceso,
+    .panelControl {
+        padding: 15px;
+    }
+
+    .imagenCandado {
+        width: 70px;
+        height: 70px;
+    }
+
+    .candadoImagen {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Animaciones CSS */
+@keyframes aparecerDesdeAbajo {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulsar {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes flotar {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(-30px, -30px);
+    }
+}

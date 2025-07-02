@@ -10,7 +10,6 @@
     --texto-secundario: #6B5B73;
     --texto-claro: #9E9E9E;
     --color-exito: #4CAF50;
-    --color-advertencia: #FF9800;
     --color-peligro: #F44336;
     --borde-claro: #E0E0E0;
     --sombra-suave: rgba(0, 0, 0, 0.08);
@@ -37,6 +36,10 @@ body {
     padding-left: 280px; /* Espacio para la barra lateral */
 }
 
+.contenidoConMargen {
+    width: 100%;
+}
+
 /* Sección principal (hero) */
 .seccionPrincipal {
     min-height: 100vh;
@@ -53,7 +56,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
 }
 
@@ -61,6 +64,9 @@ body {
 .contenidoPrincipal {
     animation: aparecerDesdeAbajo 0.8s ease-out;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 /* Perfil del usuario */
@@ -68,7 +74,6 @@ body {
     display: flex;
     align-items: center;
     gap: 18px;
-    margin-bottom: 30px;
     padding: 22px;
     background: var(--fondo-tarjeta);
     border-radius: 18px;
@@ -89,6 +94,7 @@ body {
     color: white;
     box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
     flex-shrink: 0;
+    object-fit: cover;
 }
 
 .informacionPerfil {
@@ -99,94 +105,228 @@ body {
     font-size: 26px;
     font-weight: bold;
     color: var(--texto-principal);
+    margin-bottom: 8px;
+}
+
+.detallesUsuario p {
     margin-bottom: 4px;
-}
-
-.informacionPerfil .textoBienvenida {
     font-size: 14px;
-    color: var(--texto-secundario);
 }
 
-/* Tarjeta de último acceso */
-.tarjetaAcceso {
+.detallesUsuario p:first-child {
+    color: var(--texto-secundario);
+    font-weight: 500;
+}
+
+.textoBienvenida {
+    font-size: 13px;
+    color: var(--texto-claro);
+}
+
+/* Panel de estadísticas */
+.estadisticasPanel {
+    animation: aparecerDesdeAbajo 0.8s ease-out;
     background: var(--fondo-tarjeta);
     border-radius: 20px;
     padding: 28px;
     box-shadow: 0 10px 40px var(--sombra-suave);
     border: 1px solid var(--borde-claro);
-    margin-bottom: 30px;
     width: 100%;
 }
 
-.encabezadoAcceso {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.tituloEstadisticas {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--texto-principal);
     margin-bottom: 20px;
+    text-align: center;
 }
 
-.iconoAcceso {
+.estadisticasGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.estadisticaItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 12px;
+    border: 1px solid var(--borde-claro);
+    transition: all 0.3s ease;
+}
+
+.estadisticaItem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--sombra-suave);
+}
+
+.estadisticaIcono {
     width: 45px;
     height: 45px;
-    background: linear-gradient(135deg, var(--color-exito), #66BB6A);
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
     color: white;
+    flex-shrink: 0;
 }
 
-.tituloAcceso {
+.estadisticaTexto {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.estadisticaNumero {
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.estadisticaLabel {
+    font-size: 12px;
+    color: var(--texto-secundario);
+    font-weight: 500;
+}
+
+/* Sección de accesos recientes */
+.accesosRecientes {
+    background: var(--fondo-tarjeta);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 10px 40px var(--sombra-suave);
+    border: 1px solid var(--borde-claro);
+    width: 100%;
+}
+
+.encabezadoAccesos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--borde-claro);
+}
+
+.tituloAccesos {
     font-size: 18px;
     font-weight: 600;
     color: var(--texto-principal);
 }
 
-/* Detalles del acceso */
-.detallesAcceso {
-    display: grid;
-    gap: 14px;
-}
-
-.elementoDetalle {
+.listaAccesos {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.itemAcceso {
+    display: flex;
     align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    gap: 16px;
+    padding: 18px;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 14px;
+    border: 1px solid var(--borde-claro);
+    transition: all 0.3s ease;
 }
 
-.elementoDetalle:last-child {
-    border-bottom: none;
+.itemAcceso:hover {
+    background: rgba(0, 0, 0, 0.04);
+    transform: translateX(4px);
+    border-color: var(--color-cobre-acento);
 }
 
-.etiquetaDetalle {
+.iconoAccesoItem {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, var(--color-cobre-acento), var(--color-dorado-acento));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.infoAcceso {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nombreAcceso {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--texto-principal);
+    margin: 0;
+}
+
+.fechaAcceso {
     font-size: 13px;
     color: var(--texto-secundario);
     font-weight: 500;
+    margin: 0;
 }
 
-.valorDetalle {
-    font-size: 14px;
-    color: var(--texto-principal);
-    font-weight: 600;
-    text-align: right;
+.horaAcceso {
+    font-size: 12px;
+    color: var(--texto-claro);
+    margin: 0;
 }
 
-.estadoExitoso {
-    color: var(--color-exito);
+.estadoAcceso {
     display: flex;
-    align-items: center;
-    gap: 6px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
 }
 
-.puntoEstado {
-    width: 8px;
-    height: 8px;
-    background: var(--color-exito);
-    border-radius: 50%;
-    animation: pulsar 2s infinite;
+.estadoBadge {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.estadoExito {
+    background: rgba(76, 175, 80, 0.1);
+    color: var(--color-exito);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.estadoError {
+    background: rgba(244, 67, 54, 0.1);
+    color: var(--color-peligro);
+    border: 1px solid rgba(244, 67, 54, 0.2);
+}
+
+.botonDetalles {
+    background: none;
+    border: 1px solid var(--borde-claro);
+    color: var(--texto-secundario);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.botonDetalles:hover {
+    background: var(--color-cobre-acento);
+    color: white;
+    border-color: var(--color-cobre-acento);
 }
 
 /* Sección visual del dashboard */
@@ -249,8 +389,8 @@ body {
     background: linear-gradient(135deg, rgba(212, 165, 116, 0.1), rgba(184, 115, 51, 0.1));
     padding: 15px;
     box-shadow: 0 8px 25px rgba(212, 165, 116, 0.2);
-    user-select: none;      /* No se puede seleccionar */
-    pointer-events: auto;   /* Permite eventos si los necesitas */
+    user-select: none;
+    pointer-events: auto;
 }
 
 .imagenCandado:hover {
@@ -264,135 +404,12 @@ body {
     object-fit: contain;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
     transition: all 0.3s ease;
-  
-    user-select: none;      /* No se puede seleccionar */
-    pointer-events: auto;   /* Permite eventos si los necesitas */
-  }
-  
+    user-select: none;
+    pointer-events: auto;
+}
 
 .imagenCandado:hover .candadoImagen {
     filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
-}
-
-/* Estado del sistema */
-.estadoSistema {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px;
-    background: rgba(76, 175, 80, 0.1);
-    border-radius: 14px;
-    margin-bottom: 28px;
-    border: 1px solid rgba(76, 175, 80, 0.2);
-}
-
-.informacionEstado {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.indicadorEstado {
-    width: 11px;
-    height: 11px;
-    background: var(--color-exito);
-    border-radius: 50%;
-    animation: pulsar 2s infinite;
-}
-
-.textoEstado {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-exito);
-}
-
-.informacionSistema {
-    font-size: 12px;
-    color: var(--texto-secundario);
-    text-align: right;
-}
-
-/* Cuadrícula de acciones */
-.cuadriculaAcciones {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-    width: 100%;
-}
-
-/* Botones de acción */
-.botonAccion {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 14px 18px;
-    border-radius: 14px;
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
-.botonPrimario {
-    background: linear-gradient(135deg, var(--color-cobre-acento), var(--color-dorado-acento));
-    color: white;
-    box-shadow: 0 8px 20px rgba(184, 115, 51, 0.3);
-}
-
-.botonPrimario:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(184, 115, 51, 0.4);
-}
-
-.botonSecundario {
-    background: var(--fondo-claro);
-    color: var(--texto-principal);
-    border: 2px solid var(--borde-claro);
-}
-
-.botonSecundario:hover {
-    background: #b8733378;
-    color: white;
-    border-color: #b8733378;
-    transform: translateY(-2px);
-}
-
-.iconoBoton {
-    font-size: 15px;
-}
-
-/* Estadísticas rápidas */
-.estadisticasRapidas {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid var(--borde-claro);
-    width: 100%;
-}
-
-.elementoEstadistica {
-    text-align: center;
-}
-
-.numeroEstadistica {
-    font-size: 22px;
-    font-weight: bold;
-    color: var(--color-cobre-acento);
-    margin-bottom: 4px;
-}
-
-.etiquetaEstadistica {
-    font-size: 11px;
-    color: var(--texto-secundario);
-    font-weight: 500;
 }
 
 /* Patrón de fondo tecnológico */
@@ -405,6 +422,112 @@ body {
     opacity: 0.05;
     animation: flotar 18s linear infinite;
     pointer-events: none;
+}
+
+/* Modal para detalles */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modalContent {
+    background: var(--fondo-tarjeta);
+    border-radius: 20px;
+    padding: 32px;
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--borde-claro);
+    animation: aparecerDesdeAbajo 0.3s ease-out;
+}
+
+.modalCloseButton {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--texto-claro);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modalCloseButton:hover {
+    color: var(--color-peligro);
+}
+
+.modalBody {
+    text-align: center;
+}
+
+.modalIcono {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-cobre-acento), var(--color-dorado-acento));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    margin: 0 auto 20px;
+}
+
+.modalTitulo {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--texto-principal);
+    margin-bottom: 24px;
+}
+
+.modalDetalles {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+}
+
+.modalDetalle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--borde-claro);
+}
+
+.modalDetalle:last-child {
+    border-bottom: none;
+}
+
+.modalEtiqueta {
+    font-size: 14px;
+    color: var(--texto-secundario);
+    font-weight: 500;
+}
+
+.modalValor {
+    font-size: 14px;
+    color: var(--texto-principal);
+    font-weight: 600;
+}
+
+.modalExito {
+    color: var(--color-exito);
+}
+
+.modalError {
+    color: var(--color-peligro);
 }
 
 /* Responsive para tablets */
@@ -424,6 +547,11 @@ body {
     .contenedorPrincipal {
         padding: 0 20px;
         max-width: 100%;
+    }
+
+    .estadisticasGrid {
+        grid-template-columns: 1fr;
+        gap: 14px;
     }
 }
 
@@ -455,7 +583,18 @@ body {
         font-size: 22px;
     }
 
-    .tarjetaAcceso {
+    .estadisticasGrid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .estadisticaItem {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .accesosRecientes,
+    .estadisticasPanel {
         padding: 20px;
         width: 100%;
         max-width: 100%;
@@ -467,28 +606,12 @@ body {
         max-width: 100%;
     }
 
-    .cuadriculaAcciones {
-        grid-template-columns: 1fr;
-        width: 100%;
-    }
-
-    .botonAccion {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .estadisticasRapidas {
-        grid-template-columns: 1fr 1fr;
-        width: 100%;
-    }
-
     .seccionPrincipal {
         padding-top: 100px;
         padding-left: 0;
         padding-right: 0;
     }
 
-    /* Ajustes para el candado en móviles */
     .imagenCandado {
         width: 80px;
         height: 80px;
@@ -497,16 +620,18 @@ body {
 
     .candadoImagen {
         width: 200px;
-    height: 200px;
+        height: 200px;
     }
 
-    /* Asegurar que todos los elementos ocupen el ancho completo */
-    .detallesAcceso,
-    .estadoSistema,
-    .encabezadoPanel,
-    .contenedorCandado {
-        width: 100%;
-        max-width: 100%;
+    .encabezadoAccesos {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .modalContent {
+        padding: 24px;
+        margin: 20px;
     }
 }
 
@@ -516,16 +641,9 @@ body {
         padding: 0 10px;
     }
     
-    .estadisticasRapidas {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-    
-    .perfilUsuario {
-        padding: 15px;
-    }
-    
-    .tarjetaAcceso,
+    .perfilUsuario,
+    .accesosRecientes,
+    .estadisticasPanel,
     .panelControl {
         padding: 15px;
     }
@@ -536,8 +654,18 @@ body {
     }
 
     .candadoImagen {
-        width: 50px;
-        height: 50px;
+        width: 150px;
+        height: 150px;
+    }
+
+    .itemAcceso {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .estadoAcceso {
+        align-items: center;
     }
 }
 
@@ -550,17 +678,6 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-@keyframes pulsar {
-    0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.7;
-        transform: scale(1.2);
     }
 }
 

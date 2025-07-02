@@ -21,9 +21,7 @@ export default function ManageCardsScreen() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [newCard, setNewCard] = useState({
-    code: '',
-    user: '',
-    status: 'activa'
+    cardId: ''
   });
 
   const cardsPerPage = 6;
@@ -74,23 +72,37 @@ export default function ManageCardsScreen() {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setNewCard({ code: '', user: '', status: 'activa' });
+    setNewCard({ cardId: '' });
   };
 
   const saveCard = () => {
-    if (!newCard.code || !newCard.user) {
-      alert('Por favor, complete todos los campos obligatorios.');
+    if (!newCard.cardId.trim()) {
+      alert('Por favor, ingrese el ID de la tarjeta.');
+      return;
+    }
+
+    // Verificar si el ID de tarjeta ya existe
+    const existingCard = cards.find(card => card.code === newCard.cardId);
+    if (existingCard) {
+      alert(`El ID de tarjeta ${newCard.cardId} ya está registrado.`);
       return;
     }
 
     const newId = Math.max(...cards.map(c => c.id)) + 1;
-    setCards(prevCards => [...prevCards, { ...newCard, id: newId }]);
-    alert(`Tarjeta ${newCard.code} registrada para ${newCard.user} con estado: ${newCard.status}`);
+    const cardData = {
+      id: newId,
+      code: newCard.cardId,
+      user: 'Sin asignar', // Usuario sin asignar por defecto
+      status: 'activa' // Estado por defecto
+    };
+
+    setCards(prevCards => [...prevCards, cardData]);
+    alert(`Tarjeta ${newCard.cardId} registrada exitosamente.`);
     closeModal();
   };
 
-  const handleInputChange = (field, value) => {
-    setNewCard(prev => ({ ...prev, [field]: value }));
+  const handleInputChange = (value) => {
+    setNewCard({ cardId: value });
   };
 
   const goToPreviousPage = () => {
@@ -189,37 +201,15 @@ export default function ManageCardsScreen() {
             <h2 className={styles.modalTitulo}>Registrar Nueva Tarjeta</h2>
             
             <div className={styles.grupoCampo}>
-              <label className={styles.etiquetaCampo}>Código de Tarjeta</label>
+              <label className={styles.etiquetaCampo}>ID de Tarjeta</label>
               <input 
                 type="text" 
                 className={styles.campoEntrada} 
                 placeholder="Ej: A1B2C3"
-                value={newCard.code}
-                onChange={(e) => handleInputChange('code', e.target.value)}
+                value={newCard.cardId}
+                onChange={(e) => handleInputChange(e.target.value)}
+                maxLength={10}
               />
-            </div>
-
-            <div className={styles.grupoCampo}>
-              <label className={styles.etiquetaCampo}>Nombre del Usuario</label>
-              <input 
-                type="text" 
-                className={styles.campoEntrada} 
-                placeholder="Ej: Juan Pérez"
-                value={newCard.user}
-                onChange={(e) => handleInputChange('user', e.target.value)}
-              />
-            </div>
-
-            <div className={styles.grupoCampo}>
-              <label className={styles.etiquetaCampo}>Estado Inicial</label>
-              <select 
-                className={styles.campoEntrada}
-                value={newCard.status}
-                onChange={(e) => handleInputChange('status', e.target.value)}
-              >
-                <option value="activa">Activa</option>
-                <option value="bloqueada">Bloqueada</option>
-              </select>
             </div>
 
             <div className={styles.botonesModal}>

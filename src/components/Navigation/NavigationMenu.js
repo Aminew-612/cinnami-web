@@ -39,10 +39,8 @@ export default function NavigationMenu({ userType }) {
     if (userType === "admin") {
       return [
         { to: "/admin", label: <span><IoHome /> Inicio</span> },
-        { to: "/admin/doors", label: <span><GiLockedDoor /> Estado de Puertas</span> },
         { to: "/admin/cards", label: <span><PiCardsThreeBold /> Gestionar Tarjetas</span> },
         { to: "/admin/users", label: <span><FaUsersGear /> Administrar Usuarios</span> },
-        { to: "/admin/manage-doors", label: <span><BsFillDoorClosedFill /> Administrar Puertas</span> },
         { to: "/", label: <span><GiExitDoor /> Cerrar Sesión</span> },
       ];
     } else {

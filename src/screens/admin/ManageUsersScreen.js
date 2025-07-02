@@ -15,7 +15,7 @@ import {
 } from 'react-icons/fa';
 import { BiSolidTrash } from "react-icons/bi";
 
-// Datos simulados de usuarios - 10 usuarios únicos
+// Datos simulados de usuarios - 10 usuarios
 const initialUsers = [
   { 
     id: 1, 

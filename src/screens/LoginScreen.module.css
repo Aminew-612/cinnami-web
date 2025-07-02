@@ -1,4 +1,3 @@
-/* LoginScreen.module.css */
 
 
 .header {
@@ -43,9 +42,9 @@
 .contenedorLogin {
   width: 100%;
   max-width: 400px;
-  margin: 0 auto;       /* centra horizontalmente sin afectar los márgenes del contenedor padre */
-  position: relative;   /* mantiene posición normal en el flujo */
-  z-index: 1;           /* opcional: para estar sobre otros elementos si es necesario */
+  margin: 0 auto;       
+  position: relative;  
+  z-index: 1;           
 }
 
 

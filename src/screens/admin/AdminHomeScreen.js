@@ -29,7 +29,7 @@ const AdminHomeScreen = () => {
     setSelectedUser(null);
   };
 
-  // Datos de accesos recientes actualizados con imágenes específicas para cada usuario
+  // Datos de accesos recientes 
   const accesosRecientes = [
     {
       id: '1',
@@ -46,7 +46,7 @@ const AdminHomeScreen = () => {
       cardId: "A12345",
       status: "Activo",
       door: "Puerta Norte",
-      foto: anaGomezFoto // Imagen específica para Ana
+      foto: anaGomezFoto 
     },
     {
       id: '2',
@@ -63,7 +63,7 @@ const AdminHomeScreen = () => {
       cardId: "B23456",
       status: "Inactivo",
       door: "Puerta Principal",
-      foto: luisTorresFoto // Imagen específica para Luis
+      foto: luisTorresFoto
     },
     {
       id: '3',
@@ -80,17 +80,17 @@ const AdminHomeScreen = () => {
       cardId: "C34567",
       status: "Activo",
       door: "Puerta Este",
-      foto: mariaLopezFoto // Imagen específica para María
+      foto: mariaLopezFoto 
     }
   ];
 
-  // Datos del administrador actualizados según la imagen
+  // Datos del administrador 
   const userProfile = {
     name: 'Juan Pérez',
     role: 'Administrador',
     email: 'juan.perez@ejemplo.com',
     lastAccess: '25/06/2025 - 08:10 AM',
-    foto: javierVazquezFoto // Usando la imagen existente del administrador
+    foto: javierVazquezFoto 
   };
 
   return (

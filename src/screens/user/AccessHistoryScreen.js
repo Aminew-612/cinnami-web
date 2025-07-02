@@ -12,7 +12,7 @@ export default function AccessHistoryScreen() {
   const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 5;
 
-  // Datos de ejemplo - en producción vendrían de una API
+  // Datos de ejemplo 
   const mockAccessData = [
     {
       id: 1,
